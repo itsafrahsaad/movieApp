@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title> Movie Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+  <ion-content *ngIf="movie">
+    <h1> {{movie.title}} </h1>
+  <p>{{movie.overview}}</p>
+
+  <ion-button
+  fill="clear"
+  (click)="toggleFavourite();$event.stopPropagation()">
+  Add Favourites
+</ion-button>
+
+  <h2> Cast </h2>
+  <ion-list *ngIf="credits.cast.length">
+    <ion-item *ngFor=" let c of credits.cast| slice:0:10" 
+    (click)="openPerson ($any(c).id)">
+      <img [src]="'https://image.tmdb.org/t/p/w200'+ $any(c).profile_path"
+      width="50"/>
+
+     {{$any(c).name}}
+    </ion-item>
+  </ion-list>
+  <h2> Crew </h2>
+
+  <ion-list *ngIf="credits.crew">
+    <ion-item *ngFor="let c of credits.crew| slice:0:10">
+    <ion-label> 
+    {{ $any(c).name }} - {{$any(c).job}}
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

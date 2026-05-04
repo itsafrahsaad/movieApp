@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Favourites</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<ion-item *ngFor="let m of movies"> 
+<img [src]="'https:image.tmdb.org/t/p/w200'+ m.poster_path" width="80"/>
+<ion-label>
+  <h2>{{m.title}}</h2>
+</ion-label>
+
+<ion-button 
+slot="end"
+color="danger"
+(click)="remove(m)">
+</ion-button>
+</ion-item>
+</ion-content>

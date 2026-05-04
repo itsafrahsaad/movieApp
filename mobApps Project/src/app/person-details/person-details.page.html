@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title> Person Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="person">
+  <h1> {{person?.name}}</h1>
+  <div *ngFor="let m of movies"></div>
+  <img [src]="person.profile_path?'https://image.tmdb.org/t/p/w200'+ person.profile_path
+  : 'https://via.placeholder.com/150'"/>
+
+<h2>{{person.name}}</h2>
+<p><b>DOB</b> {{person?.birthday}}</p>
+<p><b>DOD</b> {{person?.deathday}}</p>
+<p><b>AKA</b> {{person?.also_known}}</p>
+
+<p>{{person?.biography}}</p>
+
+<h3>Other Movies</h3>
+<ion-list>
+<ion-item *ngFor="let m of movies | slice:0:10">
+{{$any(m).title }}
+</ion-item>
+</ion-list>
+</ion-content>

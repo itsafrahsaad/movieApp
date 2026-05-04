@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Movies
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-button (click)="goToFavourites()">Favourites</ion-button>
+  <p style= "text-align:center;">G00485543</p>
+<ion-item>
+  <ion-input
+   placeholder="Search Movie" 
+  [(ngModel)]="query">
+</ion-input>
+</ion-item>
+
+<ion-button expand="full" 
+(click)="search()"> Search </ion-button>
+
+ <ion-list> 
+  <ion-item *ngFor="let m of movies" 
+  (click)="openDetails(m.id)">
+  <img 
+  [src]="'https://image.tmdb.org/t/p/w200'+ m.poster_path" width="80"/>
+
+    <ion-label>
+    <h2> {{m.title}}</h2>
+     <p>{{m.vote_average}}</p>
+    <p> {{m.overview}}</p>
+    </ion-label>
+    <ion-button (click)="toggleFavourite(m);$event.stopImmediatePropagation()"> Add Favourites </ion-button>
+    </ion-item>
+  </ion-list>
+ 
+  </ion-content>
